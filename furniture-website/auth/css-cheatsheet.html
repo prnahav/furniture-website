@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Cheatsheet â€” Eras Solutions</title>
+  <style>
+    /* --- Base --- */
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --brand: #38bdf8;
+      --accent: #a78bfa;
+      --ok: #34d399;
+      --warn: #fbbf24;
+      --danger: #f87171;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+    /* --- Layout --- */
+    .container { max-width: 1100px; margin-inline: auto; padding: 24px; }
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stack { display: flex; flex-direction: column; gap: 12px; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); }
+    /* --- Typography --- */
+    .muted { color: var(--muted); }
+    .title { font-size: clamp(28px, 2.6vw, 40px); font-weight: 800; letter-spacing: 0.3px; }
+    .subtitle { font-size: clamp(16px, 1.5vw, 18px); color: var(--muted); }
+    .headline { font-size: 2rem; font-weight: 800; }
+    .section-heading { font-weight: 800; font-size: 1.25rem; margin: 0 0 8px; }
+    .text { color: var(--text); }
+    .lead { font-size: 1.05rem; color: #cbd5e1; }
+    .highlight { background: rgba(56, 189, 248, 0.08); padding: 0.1em 0.35em; border-radius: 0.4em; border: 1px dashed rgba(56, 189, 248, 0.35); }
+    .quote { border-left: 4px solid var(--accent); padding-left: 14px; margin: 0; color: #c7d2fe; }
+    /* --- Navigation --- */
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(17, 24, 39, 0.9); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+    .navbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px; }
+    .brand { font-weight: 800; letter-spacing: 0.5px; }
+    .nav-list { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
+    .nav-link { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--text); border: 1px solid transparent; }
+    .nav-link:hover { border-color: var(--border); background: #0b1221; }
+    .cta-link { background: linear-gradient(90deg, var(--brand), var(--accent)); color: #0b1221; font-weight: 700; }
+    /* --- Hero --- */
+    .hero { display: grid; place-items: center; padding: 60px 0; background: radial-gradient(1200px 400px at 50% -10%, rgba(56, 189, 248, 0.25), transparent 60%), radial-gradient(900px 300px at 75% 10%, rgba(167, 139, 250, 0.18), transparent 55%); }
+    .hero .lead { max-width: 760px; text-align: center; }
+    /* --- Buttons --- */
+    .btn { display: inline-block; padding: 10px 16px; border-radius: 12px; text-decoration: none; border: 1px solid var(--border); transition: transform 0.08s ease; color: var(--text); background: var(--panel); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--brand); color: #041016; font-weight: 700; }
+    .btn-secondary { background: #0b1221; }
+    /* --- Cards --- */
+    .card { background: #0b1221; border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    .card .card-title { font-weight: 700; margin: 0 0 6px; }
+    .badge { font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid var(--border); }
+    .badge.ok { background: rgba(52, 211, 153, 0.12); color: var(--ok); }
+    .badge.warn { background: rgba(251, 191, 36, 0.12); color: var(--warn); }
+    /* --- Lists --- */
+    .menu { list-style: none; padding: 0; margin: 0; }
+    .menu .nav-item a { display: block; padding: 8px 10px; border-radius: 10px; color: var(--text); text-decoration: none; }
+    .menu .nav-item a:hover { background: #0b1221; }
+    /* --- Table --- */
+    .data-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .data-table th, .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .data-table thead th { background: #0b1221; text-align: left; }
+    .data-table tbody tr:hover { background: #0b1221; }
+    /* --- Media --- */
+    .media-box { display: grid; gap: 10px; }
+    .image-frame { aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #0b1221; display: grid; place-items: center; }
+    .caption { font-size: 0.9rem; color: var(--muted); }
+    /* --- Forms --- */
+    .form { display: grid; gap: 12px; }
+    .form-row { display: grid; gap: 10px; }
+    .form-label { font-weight: 600; }
+    .form-control, .select-menu, .message-box { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1221; color: var(--text); }
+    .input-help { font-size: 0.85rem; color: var(--muted); }
+    .submit-btn { background: var(--accent); color: #0b1221; font-weight: 700; }
+    /* --- Footer --- */
+    .site-footer { margin-top: 32px; border-top: 1px solid var(--border); background: #0b1221; }
+    .site-footer .footer-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--text); }
+    /* --- Responsive --- */
+    @media (max-width: 960px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="navbar container">
+      <div class="brand title">StyleGuide<span class="highlight">.demo</span></div>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="#typography">Typography</a></li>
+        <li><a class="nav-link" href="#components">Components</a></li>
+        <li><a class="nav-link" href="#media">Media</a></li>
+        <li><a class="nav-link cta-link" href="#forms">Forms</a></li>
+      </ul>
+    </div>
+  </header>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container lead">
+      <h1 class="title">Targeted Elements with <span class="highlight">CSS Classes</span></h1>
+      <p class="subtitle">A compact demo of frequently targeted HTML elements and the classes developers use to style them.</p>
+      <div class="row" style="justify-content:center;margin-top:14px">
+        <a class="btn btn-primary" href="#components">View Components</a>
+        <a class="btn btn-secondary" href="#forms">Jump to Forms</a>
+      </div>
+    </div>
+  </section>
+  <main class="container stack">
+    <!-- Typography -->
+    <section id="typography" class="panel stack">
+      <h2 class="section-heading">Typography Targets</h2>
+      <p class="text">Use classes like <code>.headline</code>, <code>.lead</code>, <code>.muted</code>, and <code>.highlight</code> to style text.</p>
+      <h3 class="headline">This is a .headline inside the content</h3>
+      <p class="lead">This is a lead paragraph that stands out for summaries or introductions.</p>
+      <blockquote class="quote">"Design is not just what it looks like and feels like. Design is how it works." â€” Steve Jobs</blockquote>
+      <p class="muted">Muted note: pair utility classes with semantic elements for accessible typography.</p>
+    </section>
+    <!-- Components -->
+    <section id="components" class="panel stack">
+      <h2 class="section-heading">Components &amp; Lists</h2>
+      <div class="grid grid-3">
+        <article class="card stack">
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <h4 class="card-title">Card Component</h4>
+            <span class="badge ok">OK</span>
+          </div>
+          <p class="text">A generic <code>.card</code> with <code>.card-title</code>, content, and badges.</p>
+          <a class="btn" href="#">Default Button</a>
+        </article>
+        <article class="card stack">
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <h4 class="card-title">Warning Card</h4>
+            <span class="badge warn">Heads up</span>
+          </div>
+          <p class="text">Use badges to convey status. Mix with <code>.muted</code> for secondary text.</p>
+          <a class="btn btn-primary" href="#">Primary Action</a>
+        </article>
+        <article class="card stack">
+          <h4 class="card-title">Navigation List</h4>
+          <ul class="menu">
+            <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+          </ul>
+        </article>
+      </div>
+      <div class="panel" style="margin-top:12px">
+        <table class="data-table">
+          <thead>
+            <tr><th>Class</th><th>Purpose</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>.container</code></td><td>Centered layout wrapper</td><td>Max width + padding</td></tr>
+            <tr><td><code>.grid .grid-3</code></td><td>Three-column grid</td><td>Cards / galleries</td></tr>
+            <tr><td><code>.row</code></td><td>Horizontal flex stack</td><td>Inline actions</td></tr>
+            <tr><td><code>.panel</code></td><td>Elevated surface</td><td>Sections / modules</td></tr>
+            <tr><td><code>.muted</code></td><td>Lower emphasis text</td><td>Notes / captions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- Media -->
+    <section id="media" class="panel stack media-box">
+      <h2 class="section-heading">Media</h2>
+      <figure class="image-frame">
+        <figcaption class="caption">Placeholder media frame (use <code>.image-frame</code> + <code>.caption</code>)</figcaption>
+      </figure>
+      <div class="row">
+        <span class="badge">.badge</span>
+        <span class="badge ok">.badge.ok</span>
+        <span class="badge warn">.badge.warn</span>
+      </div>
+    </section>
+    <!-- Forms -->
+    <section id="forms" class="panel stack">
+      <h2 class="section-heading">Forms &amp; Inputs</h2>
+      <form class="form" action="#" method="post">
+        <div class="form-row">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-control" type="text" id="name" name="name" placeholder="Jane Doe">
+          <small class="input-help">Use <code>.form-control</code> for inputs.</small>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" id="email" name="email" placeholder="name@example.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="role">Role</label>
+          <select class="select-menu" id="role" name="role">
+            <option>Designer</option>
+            <option>Developer</option>
+            <option>Manager</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="message-box" id="message" rows="4" placeholder="Write something..."></textarea>
+        </div>
+        <div class="row">
+          <button class="btn submit-btn" type="submit">Send</button>
+          <button class="btn" type="reset">Reset</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="site-footer footer">
+    <div class="container row" style="justify-content:space-between;align-items:center;padding:14px 24px">
+      <p class="muted">&copy; 2025 Eras Solutions. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#typography">Typography</a>
+        <a href="#components">Components</a>
+        <a href="#media">Media</a>
+        <a href="#forms">Forms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
